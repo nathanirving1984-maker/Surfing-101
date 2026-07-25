@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

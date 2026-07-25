@@ -2,18 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import type { Spot } from "@/data/spots";
 import DifficultyBadge from "@/components/DifficultyBadge";
-
-const WorldMap = dynamic(() => import("@/components/WorldMap"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-80 items-center justify-center rounded-2xl border border-black/10 bg-black/[0.02] text-sm text-slate-500 sm:h-96 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400">
-      Loading map…
-    </div>
-  ),
-});
 
 export default function SpotsBrowser({ spots, continents }: { spots: Spot[]; continents: string[] }) {
   const [continent, setContinent] = useState<string>("All");
@@ -21,18 +11,6 @@ export default function SpotsBrowser({ spots, continents }: { spots: Spot[]; con
   const filtered = useMemo(
     () => (continent === "All" ? spots : spots.filter((s) => s.continent === continent)),
     [spots, continent]
-  );
-
-  const markers = useMemo(
-    () =>
-      filtered.map((s) => ({
-        lat: s.lat,
-        lng: s.lng,
-        label: `${s.name} — ${s.region}`,
-        kind: "spot" as const,
-        href: `/spots/${s.slug}`,
-      })),
-    [filtered]
   );
 
   return (
@@ -61,11 +39,7 @@ export default function SpotsBrowser({ spots, continents }: { spots: Spot[]; con
         ))}
       </div>
 
-      <div className="mt-6">
-        <WorldMap markers={markers} />
-      </div>
-
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2">
         {filtered.map((spot) => (
           <Link
             key={spot.slug}

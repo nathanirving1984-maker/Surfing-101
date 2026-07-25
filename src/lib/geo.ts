@@ -1,3 +1,5 @@
+export type Unit = "metric" | "imperial";
+
 export type GeocodeResult = {
   name: string;
   country: string;
