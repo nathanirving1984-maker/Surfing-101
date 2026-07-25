@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/learn", label: "Learn to Surf" },
   { href: "/spots", label: "Wave Breaks" },
+  { href: "/explore", label: "Explore" },
   { href: "/shops", label: "Surf Shops" },
   { href: "/gear", label: "Gear Guide" },
 ];

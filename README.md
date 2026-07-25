@@ -1,8 +1,8 @@
 # Surfing 101 🌊
 
-A free website that helps new surfers get started: the basics of how to surf, Northern
-California wave breaks to learn at, nearby surf shops, and guidance on picking a board and
-wetsuit.
+A free website that helps new surfers get started, anywhere in the world: the basics of how to
+surf, beginner-friendly wave breaks on six continents, live forecast conditions and nearby surf
+shops for any location you search, and guidance on picking a board and wetsuit.
 
 Built with [Next.js](https://nextjs.org) and exported as a static site so it can be hosted for
 free on GitHub Pages.
@@ -10,10 +10,26 @@ free on GitHub Pages.
 ## Sections
 
 - **Learn to Surf** — technique basics, etiquette, safety, and a glossary.
-- **Wave Breaks** — Northern California surf spots (Linda Mar, Cowell's, Stinson Beach, Bolinas,
-  Rodeo Beach, and more), with difficulty, conditions, and hazards for each.
-- **Surf Shops** — local shops for board/wetsuit rentals and lessons.
+- **Wave Breaks** — a curated, mapped list of beginner-friendly surf spots across North America,
+  Oceania, Europe, Africa, and Asia, with difficulty, conditions, and hazards for each.
+- **Explore** — search any beach, city, or coastline on Earth for forecast wave/wind conditions
+  and nearby surf shops. Works globally, not just for the curated spots list.
+- **Surf Shops** — a curated directory of Northern California shops for board/wetsuit rentals and
+  lessons (see Explore for shops anywhere else).
 - **Gear Guide** — board types by skill level and a wetsuit-thickness guide by water temperature.
+
+## How Explore works
+
+Explore is entirely client-side and calls free, keyless public APIs directly from the visitor's
+browser — no backend or database required, which keeps this a static site:
+
+- **Geocoding** and **marine/weather forecasts** from [Open-Meteo](https://open-meteo.com/).
+- **Nearby surf shops** from [OpenStreetMap](https://www.openstreetmap.org/) via the Overpass API.
+- The world map (curated spots, and Explore results) renders with [Leaflet](https://leafletjs.com/)
+  and OpenStreetMap tiles.
+
+Because these are forecast/community-sourced data, not live buoy sensors, results are clearly
+labeled as forecasts — always confirm with a local surf report before paddling out.
 
 ## Getting started locally
 
@@ -48,4 +64,4 @@ The site will be published at `https://<your-github-username>.github.io/Surfing-
 ## Adding content
 
 Spot, shop, board, and wetsuit data live in `src/data/*.ts` as plain TypeScript arrays — add a
-new entry to extend any section without touching page markup.
+new entry (including `lat`/`lng` for the map) to extend any section without touching page markup.

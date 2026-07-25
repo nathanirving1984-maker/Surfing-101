@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Surfing 101 — Learn to Surf",
+    default: "Surfing 101 — Learn to Surf, Anywhere",
     template: "%s | Surfing 101",
   },
   description:
-    "A free guide for new surfers: how to surf, where to surf on the Northern California coast, local surf shops, and what board and wetsuit to start with.",
+    "A free guide for new surfers anywhere in the world: how to surf, wave breaks and surf shops on every continent, live conditions for any location, and what board and wetsuit to start with.",
 };
 
 export default function RootLayout({

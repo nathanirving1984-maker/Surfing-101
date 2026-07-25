@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { spots, getSpotBySlug } from "@/data/spots";
 import DifficultyBadge from "@/components/DifficultyBadge";
+import SpotMap from "@/components/SpotMap";
 
 export function generateStaticParams() {
   return spots.map((spot) => ({ slug: spot.slug }));
@@ -47,10 +48,16 @@ export default async function SpotPage({ params }: { params: Promise<{ slug: str
         </h1>
         <DifficultyBadge level={spot.difficulty} />
       </div>
-      <p className="mt-1 text-slate-500 dark:text-slate-400">{spot.region}</p>
+      <p className="mt-1 text-slate-500 dark:text-slate-400">
+        {spot.region}, {spot.country}
+      </p>
 
       <p className="mt-6 text-lg text-slate-700 dark:text-slate-300">{spot.summary}</p>
       <p className="mt-4 text-slate-600 dark:text-slate-400">{spot.description}</p>
+
+      <div className="mt-6">
+        <SpotMap lat={spot.lat} lng={spot.lng} label={spot.name} />
+      </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 rounded-2xl border border-black/10 bg-black/[0.02] p-5 sm:grid-cols-3 dark:border-white/10 dark:bg-white/[0.03]">
         {facts.map(([label, key]) => (
@@ -72,10 +79,10 @@ export default async function SpotPage({ params }: { params: Promise<{ slug: str
 
       <div className="mt-10 flex flex-wrap gap-3">
         <Link
-          href="/shops"
+          href={`/explore?lat=${spot.lat}&lng=${spot.lng}&name=${encodeURIComponent(spot.name)}`}
           className="rounded-full bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-700"
         >
-          Find nearby gear &amp; shops
+          Check live conditions &amp; nearby shops
         </Link>
         <Link
           href="/gear"

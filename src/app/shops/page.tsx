@@ -16,9 +16,13 @@ export default function ShopsPage() {
         Where to rent gear or book a lesson
       </h1>
       <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-400">
-        Renting is the cheapest way to try surfing before you buy anything. These shops sit near
-        the beginner-friendly spots covered in the Wave Breaks section. Hours, pricing, and
-        inventory change, so call ahead or check a shop&apos;s website before visiting.
+        Renting is the cheapest way to try surfing before you buy anything. This curated list
+        covers Northern California&apos;s beginner spots specifically. Everywhere else,{" "}
+        <a href="/explore" className="font-semibold text-cyan-700 hover:underline dark:text-cyan-400">
+          Explore
+        </a>{" "}
+        can pull up nearby surf shops for any location on Earth. Hours, pricing, and inventory
+        change, so call ahead or check a shop&apos;s website before visiting.
       </p>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
